@@ -5,14 +5,27 @@ import java.util.*;
 public class BlackList {
 	
 	private static final float horas=6;
-	public List<String> listUrl ;
+	public Map<String,?> listUrl ;
 	public GregorianCalendar dLast;
 	
 	public BlackList(){
-		listUrl=new ArrayList<String>();
+		mapUrl=new HashMap<String,String>();
 	}
 	
+	public BlackList(HashMap<String,String> l){
+		for(String s:l.values()){
+			mapUrl.put(s,s);
+		}
+	}
 	
+	public Map<String,String> getUrl(){
+        Map<String,String> res = new HashMap<>();
+        for(String s : mapUrl.values()) {
+            res.put(s, s);
+        }
+        return res;
+    }
+}
 	
 	public boolean add (String url){
 		
@@ -21,10 +34,10 @@ public class BlackList {
 		
 		if(dLast.getTimeInMillis()<(today.getTimeInMillis())+(horas*60*60*1000))
 		{
-			this.listUrl.clear();
+			this.mapUrl.clear();
 		}
 		
-		if(url!=null&&this.listUrl.add(url))
+		if(url!=null&&this.mapUrl.put(url,url)!=null)
 		{
 
 			return true;
@@ -32,5 +45,17 @@ public class BlackList {
 		return false;
 	}
 	
+	public boolean existe(String url){
+		return mapUrl.containsKey(url);
+	}
+	
+	public String toString() {
+        StringBuilder s = new StringBuilder("<h1>ListaUrl</h1>");
+        for (Ponto2D p : pontos) {
+			s.append("<p>")
+            s.append(p.toString() + "</p>");
+        }
+        return s.toString();
+    }
 
 }
