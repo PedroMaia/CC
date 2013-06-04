@@ -19,6 +19,7 @@ public class ProcuraServicos {
 	
     static final UUID OBEX_FILE_TRANSFER = new UUID(0x1106);
     static final UUID OBEX_OBJECT_PUSH = new UUID(0x1105);
+    static final UUID OBEX=new UUID(0x0008);
 
     public static Vector <String> servico=new Vector<String>();
     public  DiscoverDevice ddiv;
@@ -33,11 +34,9 @@ public class ProcuraServicos {
    
     
     public void findServicos(){
+	this.ddiv.find();
     	
     	
-    	this.ddiv.find();
-    	
-    	//this.servico.clear();
 
         UUID serviceUUID = OBEX_OBJECT_PUSH;
         
@@ -97,7 +96,7 @@ public class ProcuraServicos {
         };
 
 
-        UUID[] searchUuidSet = new UUID[] { serviceUUID };
+        UUID[] searchUuidSet = new UUID[] { serviceUUID,OBEX };
         int[] attrIDs =  new int[]
         {
                 0x0100 // Service name

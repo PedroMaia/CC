@@ -14,14 +14,15 @@ public class ClienteSend implements Runnable {
 	
 	SMessage sms;
 	String url;
-	BlackList lst;
+
 	
-	public ClienteSend(SMessage sms,String url,BlackList l){
+	public ClienteSend(SMessage sms,String url){
 		
 		this.sms=sms;
 		this.url=url;
-		this.lst=l;
+	
 	}
+	
 	
 	public void run(){
 		
@@ -39,6 +40,7 @@ public class ClienteSend implements Runnable {
 			// TODO Auto-generated catch block
 			System.err.println("Erro ao criar sessão");
 			e.printStackTrace();
+			
 		}
         
         
@@ -46,6 +48,7 @@ public class ClienteSend implements Runnable {
 		try 
 		{
 			hsConnectReply = clientSession.connect(null);
+			
 		} catch (IOException e)
 		
 		{
@@ -159,4 +162,10 @@ public class ClienteSend implements Runnable {
 		
 	}
 
+	
+	
+	
+	public String getUrl(){
+		return this.url;
+	}
 }

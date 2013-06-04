@@ -12,11 +12,21 @@ public class BlackList {
 		mapUrl=new HashMap<String,String>();
 	}
 	
+	
+	
+	public void clearList(){
+		
+		this.mapUrl.clear();
+	}
+	
 	public BlackList(HashMap<String,String> l){
 		for(String s:l.values()){
 			mapUrl.put(s,s);
 		}
 	}
+	
+	
+	
 	
 	public Map<String,String> getUrl(){
         Map<String,String> res = new HashMap<String,String>();

@@ -1,10 +1,9 @@
 package Code;
 
+
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -36,6 +35,14 @@ public class SystemBlue implements Runnable{
 		
 	}
 	
+	
+	public void cleanCookies(){
+		
+		this.stopServer();
+		this.cord.getBlackList().clearList();
+		this.startServer();
+		
+	}
 	
 	
 	
@@ -94,6 +101,12 @@ public class SystemBlue implements Runnable{
 	            			 // bw.write("pois\n");
 	            			  sblue.startServer();
 	            		  }else
+	            			  if(line.equals("clear"))
+	            			  {
+	            				  //limpa a blacklist
+	            				  sblue.cleanCookies();
+	            				  
+	            			  }else
 	            			  if(line.equals("stop"))
 	            			  {
 	            				  sblue.stopServer();
@@ -102,9 +115,19 @@ public class SystemBlue implements Runnable{
 	            			  }else{//para mudar a mensagem
 	            				  		String [] elem=line.split(" ");
 	            				  		
-	            				  		if((elem[0].equals("txt"))&&elem.length>2)
+	            				  		if((elem[0].equals("txt"))&&elem.length>1)
 	            				  		{
-	            				  			System.out.println("A trocar mensagem:"+sblue.setSms(elem[1])+"\n");
+	            				  			
+	            				  			//para ler frase inteira
+	            				  			StringBuffer str= new StringBuffer();
+	            				  			for(int i=1;i<elem.length;i++){
+	            				  				
+	            				  				str.append(elem[i]+" ");
+	            				  			}
+	            				  			
+	            				  			
+	            				  			System.out.println("A trocar mensagem:"+sblue.setSms(str.toString()));
+	            				  			
 	            				  		}
 	            				  		else{
 	            				  				System.out.println("Erro na troca de mensagem!");

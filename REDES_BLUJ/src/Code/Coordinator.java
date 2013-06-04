@@ -20,6 +20,11 @@ public class Coordinator implements Runnable{
 	}
 	
 	
+	public BlackList getBlackList(){
+		return this.blackl;
+	}
+	
+	
 	public Boolean getEstado(){
 		return this.estado;
 	}
@@ -36,7 +41,7 @@ public class Coordinator implements Runnable{
 	
 	public void run(){
 		
-		ClienteSend[] cs;
+		ClienteSend []cs;
 		
 		while(true)
 		{
@@ -48,12 +53,14 @@ public class Coordinator implements Runnable{
 			
 			
 			Thread[] th=new Thread [max];
-			cs=new ClienteSend [max];
+			cs= new ClienteSend[max];
+			
 			for(int i=0;i<max;i++)
 			{
-				cs[i]=new ClienteSend(this.mensagem, ProcuraServicos.servico.get(i),new BlackList());
-				th[i]=new Thread(cs[i]);
-				th[i].start();
+			
+					cs[i]=new ClienteSend(this.mensagem,ProcuraServicos.servico.get(i));
+					th[i]=new Thread(cs[i]);
+					th[i].start();
 			}
 
 			
