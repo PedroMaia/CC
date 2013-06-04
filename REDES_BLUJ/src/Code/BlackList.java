@@ -5,7 +5,7 @@ import java.util.*;
 public class BlackList {
 	
 	private static final float horas=6;
-	public Map<String,?> listUrl ;
+	public Map<String,String> mapUrl;
 	public GregorianCalendar dLast;
 	
 	public BlackList(){
@@ -19,13 +19,13 @@ public class BlackList {
 	}
 	
 	public Map<String,String> getUrl(){
-        Map<String,String> res = new HashMap<>();
+        Map<String,String> res = new HashMap<String,String>();
         for(String s : mapUrl.values()) {
             res.put(s, s);
         }
         return res;
     }
-}
+
 	
 	public boolean add (String url){
 		
@@ -51,9 +51,9 @@ public class BlackList {
 	
 	public String toString() {
         StringBuilder s = new StringBuilder("<h1>ListaUrl</h1>");
-        for (Ponto2D p : pontos) {
-			s.append("<p>")
-            s.append(p.toString() + "</p>");
+        for (String si :mapUrl.values()) {
+			s.append("<p>");
+            s.append(si.toString() + "</p>");
         }
         return s.toString();
     }
