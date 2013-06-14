@@ -122,7 +122,7 @@ public class SystemBlue implements Runnable{
 	            				  			StringBuffer str= new StringBuffer();
 	            				  			for(int i=1;i<elem.length;i++){
 	            				  				
-	            				  				str.append(elem[i]+" ");
+	            				  				str.append(elem[i].toString()+" ");
 	            				  			}
 	            				  			
 	            				  			
@@ -150,6 +150,7 @@ public class SystemBlue implements Runnable{
 	            	  br.close();
 	            	  sock.close();
 	              }
+	      
 	    } catch (IOException ex)
 	    {
 	    	System.err.print("Erro socket");
