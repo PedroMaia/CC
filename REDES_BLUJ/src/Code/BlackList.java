@@ -3,8 +3,8 @@ package Code;
 import java.util.*;
 
 public class BlackList {
-	
-	private static final float horas=6;
+	//Tempo em milisegundos
+	private static final float tempo=6;
 	public Map<String,String> mapUrl;
 	public GregorianCalendar dLast;
 	
@@ -41,17 +41,18 @@ public class BlackList {
 		
 		GregorianCalendar today=new GregorianCalendar();
 		
-		
-		if(dLast.getTimeInMillis()<(today.getTimeInMillis())+(horas*60*60*1000))
+		/*float resto=dLast.getTimeInMillis()-today.getTimeInMillis();
+		if(resto<tempo)
 		{
+			System.out.println("Limpa cookings");
 			this.mapUrl.clear();
-		}
+		}*/
 		
 		if(url!=null&&this.mapUrl.put(url,url)!=null)
 		{
 
 			return true;
-		}
+		}else
 		return false;
 	}
 	
